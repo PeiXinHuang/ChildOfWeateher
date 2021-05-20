@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public class UIController : MonoBehaviour
 {
 
@@ -64,13 +64,19 @@ public class UIController : MonoBehaviour
     public void ShowCTUI()
     {
         CTUI.LeanMoveLocalX(0, 0.5f);
-        //CTUI.SetActive(true);
+        CTUI.SetActive(true);
     }
     public void HideCTUI()
     {
         CTUI.LeanMoveLocalX(-800.0f, 0.5f);
-        //CTUI.SetActive(false);
+        StartCoroutine(HideCTUIforSecond());
     }
+    public IEnumerator HideCTUIforSecond()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CTUI.SetActive(false);
+    }
+
 
     //显示子面板
     public void ShowCTChildUI(int index)
@@ -199,6 +205,17 @@ public class UIController : MonoBehaviour
     }
     #endregion
 
+    #region 显微镜面板相关
+    public GameObject microscopePanel;
+    public void ShowMicroscopePanel()
+    {
+        microscopePanel.SetActive(true);
+    }
+    public void HideMicroscopePanel()
+    {
+        microscopePanel.SetActive(false);
+    }
+    #endregion
 
     #region 爱心面板相关
     public List<GameObject> hearts = new List<GameObject>();
@@ -232,5 +249,53 @@ public class UIController : MonoBehaviour
     #endregion
 
 
+    #region 切换面板相关
 
+    [SerializeField]private GameObject SeasonPanel; 
+    public void ShowSeasonPanel()
+    {
+        SeasonPanel.SetActive(true);
+    }
+    public void HideSeasonPanel()
+    {
+        SeasonPanel.SetActive(false);
+    }
+    #endregion
+
+    #region 视频面板相关
+    [SerializeField] private GameObject videoPanel;
+
+    public IEnumerator ShowVideo()
+    {
+        yield return new WaitForSeconds(1);
+        StartCoroutine(EndVideo());
+    }
+    public IEnumerator EndVideo()
+    {
+        yield return new WaitForSeconds(4);
+        videoPanel.SetActive(false);
+    }
+
+    #endregion
+
+    #region 黑屏过渡相关
+    [SerializeField] private Image fadeImg;
+    public void ShowFadeImg()
+    {
+        fadeImg.gameObject.SetActive(true);
+        fadeImg.DOFade(1, 0.5f);
+        StartCoroutine(SetImageNotActive(0.5f));
+    }
+    public IEnumerator SetImageNotActive(float second)
+    {
+        yield return new WaitForSeconds(second);
+        fadeImg.DOFade(0, 0.5f);
+        StartCoroutine(SetImageNotActiveForSecond(0.5f));
+    }
+    public IEnumerator SetImageNotActiveForSecond(float second)
+    {
+        yield return new WaitForSeconds(second);
+        fadeImg.gameObject.SetActive(false);
+    }
+    #endregion
 }

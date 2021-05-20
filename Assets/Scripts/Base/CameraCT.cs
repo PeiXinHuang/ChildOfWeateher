@@ -26,6 +26,9 @@ public class CameraCT : MonoBehaviour
     public float MouseScrollWheelSensitivity = 1.0f;//鼠标滚轮灵敏度（备注：鼠标滚轮滚动后将调整相机与目标物体之间的间隔） 
     public LayerMask CollisionLayerMask;
 
+
+
+
     void Start()
     {
         Vector3 eulerAngles = this.transform.eulerAngles;//当前物体的欧拉角 
@@ -128,8 +131,8 @@ public class CameraCT : MonoBehaviour
 
     public void SetSpeed(Slider slider)
     {
-        xSpeed = 20 + 50 * slider.value;
-        ySpeed = 20 + 50 * slider.value;
+        xSpeed = 5 + 50 * slider.value;
+        ySpeed = 5 + 50 * slider.value;
     }
 
 }

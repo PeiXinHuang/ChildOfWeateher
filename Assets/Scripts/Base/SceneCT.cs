@@ -54,16 +54,22 @@ public class SceneCT : MonoBehaviour
     #region 摄像机切换
     public Camera camMain;
     public Camera camPuzzle;
-
+    public Camera camMicroscope;
     public void SetCamMain()
     {
         camPuzzle.enabled = false;
+        camMicroscope.enabled = false;
         camMain.enabled = true;  
     }
     public void SetCamPuzzle()
     {
         camPuzzle.enabled = true;
         camMain.enabled = false;
+    }
+    public void SetCamMicroscope()
+    {
+        camMain.enabled = false;
+        camMicroscope.enabled = true;
     }
     #endregion
 
@@ -100,6 +106,9 @@ public class SceneCT : MonoBehaviour
     
 
     #endregion
+
+
+
 
     //重新开始游戏
     public void ReStartGame()

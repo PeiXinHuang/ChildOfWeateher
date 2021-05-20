@@ -61,10 +61,12 @@ public class PlayerCT : CharacterCT
         float vertical = Input.GetAxis("Vertical");
 
         float length = new Vector3(horizontal, 0, vertical).magnitude;
-        characterController.SimpleMove(transform.forward * length * Time.deltaTime * speed);
+       
+
 
         if (length > 0.05f)
         {
+            characterController.SimpleMove(transform.forward * length * Time.deltaTime * speed);
             animator.SetBool("isRun", true);
         }
         else
