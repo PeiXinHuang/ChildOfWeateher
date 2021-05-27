@@ -41,7 +41,7 @@ public class SceneCT : MonoBehaviour
         task[index] = true;
     }
 
-    public  void ChargeFinshAllTask()
+    public void ChargeFinshAllTask()
     {
         if (task[0] && task[1] && task[2] && task[3])
         {
@@ -83,10 +83,12 @@ public class SceneCT : MonoBehaviour
         uiController.SetHeartNum(lifeNum);
         if (lifeNum == 0)
         {
-            OverGame();
-          
-        }
-           
+            OverGame();      
+        }   
+    }
+    public int GetLifeNum()
+    {
+        return lifeNum;
     }
     #endregion
 

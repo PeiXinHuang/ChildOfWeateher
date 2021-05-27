@@ -8,6 +8,9 @@ public class JewelStoneCT : MonoBehaviour
     public float speed = 5.0f;
     public int stoneIndex;
 
+    public PlayerCT playerCT;
+    public float distance = 5.0f;
+
 
     void Update()
     {
@@ -16,9 +19,12 @@ public class JewelStoneCT : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GameObject.Find("SceneController").GetComponent<SceneCT>().SetFinshTask(stoneIndex);
-        HideJewelStone();
-        GameObject.Find("SceneController").GetComponent<SceneCT>().ChargeFinshAllTask();
+        if (Vector3.Distance(playerCT.transform.position, this.transform.position) < distance){
+            GameObject.Find("SceneController").GetComponent<SceneCT>().SetFinshTask(stoneIndex);
+            HideJewelStone();
+            GameObject.Find("SceneController").GetComponent<SceneCT>().ChargeFinshAllTask();
+        }
+
     }
 
     private void Start()

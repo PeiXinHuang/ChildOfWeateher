@@ -7,7 +7,7 @@ public class PuzzleStartCT : MonoBehaviour
     public PlayerCT playerCT;
     public float distance = 5.0f;
 
-    public NPCCT nPCCT;
+    public WangJuCT wangJu;
     public GameObject jewel;
 
 
@@ -19,7 +19,7 @@ public class PuzzleStartCT : MonoBehaviour
 
             if (!GameObject.Find("SceneController").GetComponent<SceneCT>().GetHasGetTask())
             {
-                nPCCT.SayMessage("你需要先接收完任务才可以开始拼图");
+                wangJu.SayMessage("你需要先接收完任务才可以开始拼图");
                 return;
             }
 
@@ -44,12 +44,12 @@ public class PuzzleStartCT : MonoBehaviour
         {
             if (GameObject.Find("SceneController").GetComponent<SceneCT>().GetHasFinishTask(0))
             {
-                nPCCT.SayMessage("虽然你已经完成了拼图，但是春天之石已经给你了，去试试其它任务吧");
+                wangJu.SayMessage("虽然你已经完成了拼图，但是春天之石已经给你了，去试试其它任务吧");
             }
             else
             {
                 jewel.SetActive(true);
-                nPCCT.SayMessage("太棒了,你已经完成拼图,春天之石是属于你的了");
+                wangJu.SayMessage("太棒了,你已经完成拼图,春天之石是属于你的了");
             }
             
            
@@ -57,7 +57,7 @@ public class PuzzleStartCT : MonoBehaviour
         else
         {
             GameObject.Find("SceneController").GetComponent<SceneCT>().LostLife();
-            nPCCT.SayMessage("你还未完成拼图，可以多试几次，加油!!!");
+            wangJu.SayMessage("你还未完成拼图，可以多试几次，加油!!!");
            
         }
     }

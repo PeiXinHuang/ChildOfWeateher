@@ -5,25 +5,33 @@ using UnityEngine;
 public class PortalCT : MonoBehaviour
 {
     public UIController uIController;
-    public bool canShowSeasonPanel = false;
-   
+    public float distance = 5.0f;
+
+    public PlayerCT player;
+
     private void OnTriggerEnter(Collider other)
     {
-        canShowSeasonPanel = true;
-        uIController.ShowMessage("", "回车打开季节切换面板");
+        uIController.ShowMessage("提示","回车显示季节切换面板");
     }
 
     private void OnTriggerExit(Collider other)
     {
-        canShowSeasonPanel = false;
-        uIController.HideSeasonPanel();
+        uIController.HideMessageImmediate();
     }
 
     public void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.KeypadEnter)|| Input.GetKeyDown(KeyCode.Return)) && canShowSeasonPanel)
+        if ((Input.GetKeyDown(KeyCode.KeypadEnter)|| Input.GetKeyDown(KeyCode.Return)) && 
+           Vector3.Distance(player.transform.position,this.transform.position)<distance)
         {
-            uIController.ShowSeasonPanel();
+            if (GameObject.Find("SceneController").GetComponent<SceneCT>().GetHasGetTask())
+            {
+                uIController.ShowSeasonPanel();
+            }
+            else
+            {
+                uIController.ShowMessage("提示", "你需要先到ZERO那里接受任务");
+            }
         }
         else if(Input.GetKeyDown(KeyCode.Escape))
         {

@@ -54,31 +54,35 @@ public class PlayerCT : CharacterCT
     //移动
     private void MoveCharacter()
     {
-        if (!canRun)
-            return;
-
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        float length = new Vector3(horizontal, 0, vertical).magnitude;
-       
 
 
-        if (length > 0.05f)
+
+        if (canRun)
         {
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+
+            float length = new Vector3(horizontal, 0, vertical).magnitude;
+
+
             characterController.SimpleMove(transform.forward * length * Time.deltaTime * speed);
-            animator.SetBool("isRun", true);
+            if (length > 0.0005f)
+            {
+                animator.SetBool("isRun", true);
+            }
+            else
+            {
+                animator.SetBool("isRun", false);
+            }
         }
-        else
-        {
-            animator.SetBool("isRun", false);
-        }
+
+    
     }
 
 
     private void JumpCharacter()
     {
-        if (characterController.isGrounded && Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             animator.SetBool("isJump", true);
             canRun = false;
@@ -142,7 +146,28 @@ public class PlayerCT : CharacterCT
         AttackCharacter(false);
     }
 
-    
+
+    #region 改变角色位置相关
+    public void DebugA(float A)
+    {
+
+    }
+    public void ChangePosAfterSecond(GameObject objPos)
+    {
+        float second = 0.5f;
+        Vector3 pos = objPos.transform.position;
+        GameObject.Find("SceneController").GetComponent<UIController>().ShowFadeImg();
+        StartCoroutine(ChangePos(second, pos));
+    }
+    private IEnumerator ChangePos(float second, Vector3 pos)
+    {
+        yield return new WaitForSeconds(second);
+        characterController.enabled = false;
+        this.transform.position = pos;
+        characterController.enabled = true;
+        uiController.HideSeasonPanel();
+    }
+    #endregion
 
     #region 服装相关
     [Header("服装材质相关")]
@@ -164,4 +189,5 @@ public class PlayerCT : CharacterCT
     #endregion
 
 
+   
 }

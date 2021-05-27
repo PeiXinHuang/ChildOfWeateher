@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/OutSideScene.unity
     guid: 5044eedc53149db46997fdcd4fcf9fcf
   - enabled: 0
-    path: Assets/Scenes/InSideDemo.unity
-    guid: ccf26d66f20e7b949a84f0d91833f923
-  - enabled: 0
     path: Assets/Scenes/PuzzleDemo.unity
     guid: 9940e92d8c924d24a83d3a3b6ba7b5b1
-  - enabled: 0
-    path: Assets/Plugins/CartoonEffect/CartoonFX/CartoonDemo.unity
-    guid: 473463a0e6e47f14e85ff92b461f8ac1
   m_configObjects: {}

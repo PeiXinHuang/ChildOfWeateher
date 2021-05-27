@@ -25,6 +25,13 @@ public class UIController : MonoBehaviour
         StartCoroutine(HideMessage());
     }
 
+    
+    public void HideMessageImmediate()
+    {
+        StopCoroutine(HideMessage());
+        message.SetActive(false);
+    }
+
     private IEnumerator HideMessage()
     {
         yield return new WaitForSeconds(2.0f);
@@ -279,7 +286,8 @@ public class UIController : MonoBehaviour
     #endregion
 
     #region 黑屏过渡相关
-    [SerializeField] private Image fadeImg;
+    
+    [SerializeField] private Image fadeImg = null;
     public void ShowFadeImg()
     {
         fadeImg.gameObject.SetActive(true);

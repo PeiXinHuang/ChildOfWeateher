@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SantaClausCT : NPCCT
 {
-
+    public PlayerCT playerCT;
+    public float distance = 5.0f;
     public List<FoodCT> foods = new List<FoodCT>();
     public Dictionary<FoodCT, bool> hasGetFoods = new Dictionary<FoodCT, bool>();
 

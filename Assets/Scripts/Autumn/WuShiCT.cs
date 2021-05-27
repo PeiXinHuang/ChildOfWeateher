@@ -14,6 +14,9 @@ public class WuShiCT : NPCCT
 
     public GameObject jewel;
 
+    public PlayerCT playerCT;
+    public float distance;
+
     private void OnMouseDown()
     {
        
@@ -37,7 +40,7 @@ public class WuShiCT : NPCCT
         if (index == rightIndex)
         {
 
-            if (GameObject.Find("SceneController").GetComponent<SceneCT>().GetHasFinishTask(1))
+            if (GameObject.Find("SceneController").GetComponent<SceneCT>().GetHasFinishTask(2))
             {
                 SayMessage("虽然你答对了，但是宝石已经给你了，赶紧离开这里吧");
             }

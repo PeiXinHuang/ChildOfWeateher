@@ -9,10 +9,9 @@ public class MicroscopeStart : MonoBehaviour
 
 
 
-    //鼠标按下，进入拼图模式,主角无法行走，显示puzzleUI,puzzle可以被操纵,显示puzzle摄像机
+
     private void OnMouseDown()
     {
-        //还没有接收任务，不可以进行拼图
         if (Vector3.Distance(this.transform.position, playerCT.transform.position) < distance)
         {
             playerCT.enabled = false;
@@ -25,7 +24,7 @@ public class MicroscopeStart : MonoBehaviour
         }
     }
 
-    //结束拼图，与结束拼图模式相反
+
     public void EndMicroscrope()
     {
         playerCT.gameObject.SetActive(true);
