@@ -435,7 +435,6 @@ public class MicroscopeController : MonoBehaviour
        
         foreach (GameObject item in jingTouPos)
         {
-            Debug.Log(Vector3.Distance(item.transform.position, jingTouPlayPos.transform.position));
             if (Vector3.Distance(item.transform.position, jingTouPlayPos.transform.position) < jingTouPlayDis)
             {
                 num = jingTouPos.IndexOf(item) + 1;
