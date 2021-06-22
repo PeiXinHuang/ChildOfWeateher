@@ -115,7 +115,7 @@ public class SceneCT : MonoBehaviour
     //重新开始游戏
     public void ReStartGame()
     {
-        SceneManager.LoadScene("OutSideScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     //退出游戏

@@ -7,26 +7,26 @@ public class VideoCT : MonoBehaviour
 {
     public PlayerCT player;
     public VideoPlayer videoPlayer;
-    public float distance = 5.0f;
-    public void Update()
-    {
-        if(Vector3.Distance(player.transform.position, this.transform.position) < distance)
-        {
-            videoPlayer.Play();
-        }
-        else
-        {
-            videoPlayer.Pause();
-        }
-    }
-
-
     public string str;
+    
 
-    public void OnMouseDown()
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(videoPlayer.isPlaying)
-            player.uiController.ShowMessage(player.characterName, str);
+        
+        videoPlayer.Play();
+        this.GetComponent<MeshRenderer>().material.color = Color.white;
+        player.uiController.ShowMessage(player.characterName, str);
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        videoPlayer.Pause();
+        this.GetComponent<MeshRenderer>().material.color = Color.black;
+        player.uiController.HideMessageImmediate();
+    }
+
+
+
 
 }
