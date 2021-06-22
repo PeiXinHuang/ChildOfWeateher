@@ -17,7 +17,7 @@ public class WuShiCT : NPCCT
     public PlayerCT playerCT;
     public float distance;
 
-    private void OnMouseDown()
+    private void OnTriggerEnter(Collider other)
     {
        
         //NPC和主角的距离小于distance时候才发挥作用
@@ -32,6 +32,13 @@ public class WuShiCT : NPCCT
         }
         
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        base.EndSayMessage();
+        base.uiController.HideMessageImmediate();
+    }
+
 
     public int rightIndex = 0; //正确选项 0 - A 1 - B 2 - C 3 - D
     public void ChargeAns(int index)
