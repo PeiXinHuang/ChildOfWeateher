@@ -80,9 +80,9 @@ public class LotusLeafRoadCT : MonoBehaviour
     public void ResetRoad()
     {
 
-        if(previousLeaf) previousLeaf.HideLeaf();
-        if(currentLeaf) currentLeaf.HideLeaf();
-        if (nextLeaf) nextLeaf.HideLeaf();
+        if(previousLeaf) previousLeaf.HideLeafImmediate();
+        if(currentLeaf) currentLeaf.HideLeafImmediate();
+        if (nextLeaf) nextLeaf.HideLeafImmediate();
 
         previousLeaf = null;
         nextLeaf = leafs[0];

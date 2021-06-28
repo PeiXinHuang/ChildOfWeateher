@@ -38,9 +38,16 @@ public class LotusLeafCT : MonoBehaviour
         StartCoroutine(HideSelfForSecond(0.5f));
     }
 
+    public void HideLeafImmediate()
+    {
+        this.gameObject.SetActive(false);
+    }
+
     private IEnumerator HideSelfForSecond(float sencond)
     {
         yield return new WaitForSeconds(sencond);
         this.gameObject.SetActive(false);
     }
+
+
 }

@@ -25,4 +25,11 @@ public class NatureCT : MonoBehaviour
         rain = GameObject.Instantiate(rainPrefab);
         snow.SetActive(false);
     }
+
+    public void BeginSetSun()
+    {
+        if (rain)
+            Destroy(rain);
+        snow.SetActive(false);
+    }
 }

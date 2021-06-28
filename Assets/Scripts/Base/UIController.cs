@@ -133,9 +133,27 @@ public class UIController : MonoBehaviour
     }
 
     //设置任务描述
-    public void SetTaskDis(string text)
+    public void SetTaskDis(int textid)
     {
-        taskDis.text = text;
+        if(textid == 0)
+        {
+            taskDis.text = "到春天场景里，点击拼图，完成拼图游戏，就可以获得春天之石，如果没有完成拼图就退出，扣除一滴血";
+        }
+
+        else if(textid == 1)
+        {
+            taskDis.text = "到夏天场景里，踩着荷叶到湖中央就可以收集到夏天之石，如果不小心掉到湖中，将会扣掉一滴血";
+        }
+
+        else if(textid == 2){
+            taskDis.text = "到秋天场景里，点击显微镜，获取信息，然后到巫师那里回答问题，回答正确获得秋天宝石，靠近精灵会有问题提示，每次回答错误扣掉一滴血";
+        }
+
+        else if(textid == 3)
+        {
+            taskDis.text = "到冬天场景里，看电视学习制作火鸡的方法，收集食材后到圣诞老人那里制作火鸡,制作完成获得冬天宝石，如果食材没有收集完毕就开始制作火鸡，扣掉一滴血";
+        }
+      
     }
 
     //完成任务时修改子任务面板
