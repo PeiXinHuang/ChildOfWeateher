@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneCT : MonoBehaviour
 {
@@ -105,11 +106,18 @@ public class SceneCT : MonoBehaviour
         uiController.ShowLoseMessageBox();
     }
 
-    
+
 
     #endregion
 
-
+    #region 音频相关
+    public Slider slider;
+    public AudioSource audioSource;
+    public void SetAudio()
+    {
+        audioSource.volume = slider.value;
+    }
+    #endregion
 
 
     //重新开始游戏

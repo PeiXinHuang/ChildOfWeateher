@@ -199,6 +199,9 @@ public class UIController : MonoBehaviour
             skyPanel1.SetActive(true);
         }
     }
+
+
+
     #endregion
 
     #region 浮动面板相关
@@ -261,14 +264,14 @@ public class UIController : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCT>().enabled = false;
         GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider>().enabled = false;
-        Camera.main.GetComponent<CameraCT>().enabled = false;
+        Camera.main.GetComponent<CameraCT2>().enabled = false;
         winMessageBox.SetActive(true);
     }
     public void HideWinMessageBox()
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCT>().enabled = true;
         GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider>().enabled = true;
-        Camera.main.GetComponent<CameraCT>().enabled = true;
+        Camera.main.GetComponent<CameraCT2>().enabled = true;
         winMessageBox.SetActive(false);
     }
     #endregion
@@ -324,4 +327,6 @@ public class UIController : MonoBehaviour
         fadeImg.gameObject.SetActive(false);
     }
     #endregion
+
+
 }
