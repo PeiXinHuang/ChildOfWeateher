@@ -10,6 +10,7 @@ public class MapCT : MonoBehaviour
     public float height = 20.0f;
     private void Update()
     {
+        //跟随角色移动
         mapCam.transform.position = player.transform.position + new Vector3(0, height, 0);
     }
 }

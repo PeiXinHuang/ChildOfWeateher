@@ -9,7 +9,6 @@ public class SkyBoxCT : MonoBehaviour
     public Skybox skybox;
     public void ChanegSkyBox(int index)
     {
-      
         skybox.material = materials[index];
     }
 

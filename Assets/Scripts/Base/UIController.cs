@@ -24,8 +24,6 @@ public class UIController : MonoBehaviour
         StopCoroutine(HideMessage());
         StartCoroutine(HideMessage());
     }
-
-    
     public void HideMessageImmediate()
     {
         StopCoroutine(HideMessage());

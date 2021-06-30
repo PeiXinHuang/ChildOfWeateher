@@ -27,7 +27,6 @@ public class PuzzleCT : MonoBehaviour
             if (puzzles.Contains(obj))
                 return obj;
         }
-        
         return null;
     }
 

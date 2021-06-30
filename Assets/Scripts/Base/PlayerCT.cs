@@ -29,20 +29,20 @@ public class PlayerCT : CharacterCT
             return;
         Vector3 selfPos = this.transform.position;
         Vector3 camPos = mainCam.transform.position;
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.UpArrow))
         {
             this.transform.LookAt(new Vector3((selfPos * 2 - camPos).x, this.transform.position.y, (selfPos * 2 - camPos).z));
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             this.transform.LookAt(new Vector3(camPos.x, selfPos.y, camPos.z));
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A )|| Input.GetKey(KeyCode.LeftArrow))
         {
             Vector3 vector = selfPos + Vector3.Cross((selfPos - camPos), this.transform.up);
             this.transform.LookAt(new Vector3(vector.x, this.transform.position.y, vector.z));
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             Vector3 vector = selfPos - Vector3.Cross((selfPos - camPos), this.transform.up);
             this.transform.LookAt(new Vector3(vector.x, this.transform.position.y, vector.z));
@@ -54,9 +54,6 @@ public class PlayerCT : CharacterCT
     //移动
     private void MoveCharacter()
     {
-
-
-
         if (canRun)
         {
             float horizontal = Input.GetAxis("Horizontal");
@@ -75,10 +72,7 @@ public class PlayerCT : CharacterCT
                 animator.SetBool("isRun", false);
             }
         }
-
-    
     }
-
 
     private void JumpCharacter()
     {
@@ -137,6 +131,7 @@ public class PlayerCT : CharacterCT
 
     private void OnMouseDown()
     {
+        //对话
         base.uiController.ShowMessage(base.characterName, base.characterText);
         AttackCharacter(true);
     }
